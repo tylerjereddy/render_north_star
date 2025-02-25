@@ -17,4 +17,4 @@ deck).
 
 Sample incantation on command line:
 
-``
+`time python probe.py adk.yaml`
