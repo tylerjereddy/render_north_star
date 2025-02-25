@@ -26,6 +26,12 @@ def main(p_config: dict):
     frame_start = p_config["frame_start"]
     frame_end = p_config["frame_end"]
     sel_string = p_config["sel_string"]
+    mode = p_config["mode"]
+
+    if mode == "movie":
+        outfile_suffix = "mp4"
+    else:
+        outfile_suffix = "png"
 
 
     if blender_engine == "CYCLES":
@@ -46,8 +52,8 @@ def main(p_config: dict):
     bpy.context.scene.frame_end = frame_end
 
     all_mol.render(resolution=(blender_resolution_x, blender_resolution_y),
-                   filepath=render_filename,
-                   mode="movie")
+                   filepath=f"{render_filename}.{outfile_suffix}",
+                   mode=mode)
 
 
 if __name__ == "__main__":

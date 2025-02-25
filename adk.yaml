@@ -9,7 +9,11 @@ blender_engine: "BLENDER_EEVEE_NEXT"
 blender_engine_device: "CPU"
 blender_resolution_x: 1000
 blender_resolution_y: 1000
-render_filename: "test.mp4"
+# mode can be "movie" or "image"
+mode: "movie"
+# .mp4 or .png filename suffix will be appended automatically
+# depending on `mode`
+render_filename: "test"
 frame_start: 0
 frame_end: 95
 # TODO: expand selection support beyond a single selection string
