@@ -2,8 +2,6 @@ import argparse
 
 
 import MDAnalysis as mda
-from MDAnalysis.tests.datafiles import PSF, DCD
-import ggmolvis
 from ggmolvis.ggmolvis import GGMolVis
 import bpy
 import yaml
@@ -28,6 +26,11 @@ def main(p_config: dict):
     frame_start = p_config["frame_start"]
     frame_end = p_config["frame_end"]
     sel_string = p_config["sel_string"]
+
+
+    if blender_engine == "CYCLES":
+        # NOTE: manual usage of bpy to set blender device, should upstream to ggmolvis
+        bpy.context.scene.cycles.device = blender_engine_device
 
     ggmv = GGMolVis()
     u = mda.Universe(topology_path, trajectory_path)

@@ -5,6 +5,7 @@ trajectory_path: "/Users/treddy/python_venvs/py_311_mda_dev/lib/python3.11/site-
 # normal options for blender_engine: "BLENDER_EEVEE_NEXT", "CYCLES"
 blender_engine: "BLENDER_EEVEE_NEXT"
 # normal options for blender_engine_device: "CPU", "GPU"
+# only CYCLES can use CPU though
 blender_engine_device: "CPU"
 blender_resolution_x: 1000
 blender_resolution_y: 1000
