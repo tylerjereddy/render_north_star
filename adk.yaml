@@ -18,3 +18,8 @@ frame_start: 0
 frame_end: 95
 # TODO: expand selection support beyond a single selection string
 sel_string: "all"
+background_color:
+  red: 0.0
+  green: 0.1
+  blue: 0.7
+  alpha: 1.0
