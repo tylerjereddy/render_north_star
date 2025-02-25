@@ -1,0 +1,15 @@
+# input deck for rendering the (PSF, DCD) test file trajectory from
+# MDAnalysis.tests
+topology_path: "/Users/treddy/python_venvs/py_311_mda_dev/lib/python3.11/site-packages/MDAnalysisTests/data/adk.psf"
+trajectory_path: "/Users/treddy/python_venvs/py_311_mda_dev/lib/python3.11/site-packages/MDAnalysisTests/data/adk_dims.dcd"
+# normal options for blender_engine: "BLENDER_EEVEE_NEXT", "CYCLES"
+blender_engine: "BLENDER_EEVEE_NEXT"
+# normal options for blender_engine_device: "CPU", "GPU"
+blender_engine_device: "CPU"
+blender_resolution_x: 1000
+blender_resolution_y: 1000
+render_filename: "test.mp4"
+frame_start: 0
+frame_end: 95
+# TODO: expand selection support beyond a single selection string
+sel_string: "all"
