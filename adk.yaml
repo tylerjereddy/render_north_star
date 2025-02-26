@@ -23,3 +23,5 @@ background_color:
   green: 0.1
   blue: 0.7
   alpha: 1.0
+# a larger focal length increases "zoom"
+focal_length: 80
