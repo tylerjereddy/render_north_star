@@ -15,7 +15,7 @@ mode: "movie"
 # depending on `mode`
 render_filename: "test"
 frame_start: 0
-frame_end: 95
+frame_end: 285
 # TODO: expand selection support beyond a single selection string
 sel_string: "all"
 background_color:
@@ -25,3 +25,9 @@ background_color:
   alpha: 1.0
 # a larger focal length increases "zoom"
 focal_length: 80
+# subframes can be increased for "smoothing" of animation;
+# increase your total frame range accordingly if you want
+# to continue to capture the same effective trajectory length;
+# so with subframes of 1 you would double upper frame bound,
+# with value of 2 you would triple, etc.
+subframes: 2
