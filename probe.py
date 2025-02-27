@@ -44,6 +44,7 @@ def main(p_config: dict):
     background_color = p_config["background_color"]
     focal_length = p_config["focal_length"]
     subframes = p_config["subframes"]
+    material = p_config["material"]
 
     if mode == "movie":
         outfile_suffix = "mp4"
@@ -58,7 +59,7 @@ def main(p_config: dict):
     ggmv = GGMolVis()
     u = mda.Universe(topology_path, trajectory_path)
     system = u.select_atoms(sel_string)
-    all_mol = ggmv.molecule(system, lens=focal_length)
+    all_mol = ggmv.molecule(system, lens=focal_length, material=material)
     all_mol.subframes = subframes
 
     # NOTE: manual bpy usage here for setting Blender engine--should be abstracted to ggmolvis

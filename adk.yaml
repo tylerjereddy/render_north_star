@@ -3,14 +3,14 @@
 topology_path: "/Users/treddy/python_venvs/py_311_mda_dev/lib/python3.11/site-packages/MDAnalysisTests/data/adk.psf"
 trajectory_path: "/Users/treddy/python_venvs/py_311_mda_dev/lib/python3.11/site-packages/MDAnalysisTests/data/adk_dims.dcd"
 # normal options for blender_engine: "BLENDER_EEVEE_NEXT", "CYCLES"
-blender_engine: "BLENDER_EEVEE_NEXT"
+blender_engine: "CYCLES"
 # normal options for blender_engine_device: "CPU", "GPU"
 # only CYCLES can use CPU though
-blender_engine_device: "CPU"
+blender_engine_device: "GPU"
 blender_resolution_x: 1000
 blender_resolution_y: 1000
 # mode can be "movie" or "image"
-mode: "movie"
+mode: "image"
 # .mp4 or .png filename suffix will be appended automatically
 # depending on `mode`
 render_filename: "test"
@@ -31,3 +31,8 @@ focal_length: 80
 # so with subframes of 1 you would double upper frame bound,
 # with value of 2 you would triple, etc.
 subframes: 2
+# at the moment, interesting materials options include:
+# default -- looks professional
+# ambient -- also looks professional
+# squishy -- a plastic-like appearance, pretty neat!
+material: "default"
