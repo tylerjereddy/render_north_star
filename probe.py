@@ -2,23 +2,9 @@ import argparse
 
 
 import MDAnalysis as mda
-from ggmolvis.ggmolvis import GGMolVis
+from ggmolvis.ggmolvis import GGMolVis, Text
 import bpy
 import yaml
-
-
-def set_background(rgba: tuple):
-    # NOTE: manual bpy usage--this functionality should be upstreamed to ggmolvis
-    bpy.context.scene.render.film_transparent = False
-    world = bpy.context.scene.world
-    if not world.use_nodes:
-        world.use_nodes = True
-    node_tree = world.node_tree
-    bg_node = node_tree.nodes.get("Background") or node_tree.nodes.new("ShaderNodeBackground")
-    bg_node.inputs["Color"].default_value = rgba
-    output_node = node_tree.nodes.get("World Output") or node_tree.nodes.new("ShaderNodeOutputWorld")
-    if not any(link.to_node == output_node for link in bg_node.outputs[0].links):
-        node_tree.links.new(bg_node.outputs[0], output_node.inputs[0])
 
 
 def main(p_config: dict):
@@ -44,6 +30,7 @@ def main(p_config: dict):
     background_color = p_config["background_color"]
     focal_length = p_config["focal_length"]
     subframes = p_config["subframes"]
+    average = p_config["average"]
     material = p_config["material"]
 
     if mode == "movie":
@@ -57,6 +44,7 @@ def main(p_config: dict):
         bpy.context.scene.cycles.device = blender_engine_device
 
     ggmv = GGMolVis()
+    ggmv.average = average
     u = mda.Universe(topology_path, trajectory_path)
     system = u.select_atoms(sel_string)
     all_mol = ggmv.molecule(system, lens=focal_length, material=material)
@@ -70,14 +58,17 @@ def main(p_config: dict):
     bpy.context.scene.frame_start = frame_start
     bpy.context.scene.frame_end = frame_end
 
-    set_background(rgba=(background_color["red"],
-                         background_color["green"],
-                         background_color["blue"],
-                         background_color["alpha"]))
-
+    text = Text(frame_counter="frame: ",
+                text_size=0.1,
+                rotation=(1.13, 0, 0),
+                location=(-0.2, -0.7, 0.0))
     all_mol.render(resolution=(blender_resolution_x, blender_resolution_y),
                    filepath=f"{render_filename}.{outfile_suffix}",
-                   mode=mode)
+                   mode=mode,
+                   composite_bg_rgba=(background_color["red"],
+                                      background_color["green"],
+                                      background_color["blue"],
+                                      background_color["alpha"]))
 
 
 if __name__ == "__main__":
