@@ -13,7 +13,7 @@ blender_resolution_y: 1000
 mode: "movie"
 # .mp4 or .png filename suffix will be appended automatically
 # depending on `mode`
-render_filename: "test"
+render_filename: "test_squishy"
 frame_start: 0
 frame_end: 95
 # TODO: expand selection support beyond a single selection string
@@ -35,5 +35,5 @@ subframes: 0
 # default -- looks professional
 # ambient -- also looks professional
 # squishy -- a plastic-like appearance, pretty neat!
-material: "default"
+material: "squishy"
 average: 3

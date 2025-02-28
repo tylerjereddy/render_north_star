@@ -52,14 +52,14 @@ def main(p_config: dict):
 
     # NOTE: manual bpy usage here for setting Blender engine--should be abstracted to ggmolvis
     bpy.context.scene.render.engine = blender_engine
-    prefs = bpy.context.preferences
-    cycles_prefs = prefs.addons['cycles'].preferences
-    cycles_prefs.get_devices()
-    cycles_prefs.compute_device_type = 'METAL'
-    for device in cycles_prefs.devices:
-        if 'Apple' in device.name and 'GPU' in device.name:
-            device.use = True
-            print(f"Enabled device: {device.name}")
+    #prefs = bpy.context.preferences
+    #cycles_prefs = prefs.addons['cycles'].preferences
+    #cycles_prefs.get_devices()
+    #cycles_prefs.compute_device_type = 'METAL'
+    #for device in cycles_prefs.devices:
+        #if 'Apple' in device.name and 'GPU' in device.name:
+            #device.use = True
+            #print(f"Enabled device: {device.name}")
 
     # NOTE: manual bpy usage--need merge of frame handling capability from i.e.,
     # https://github.com/yuxuanzhuang/ggmolvis/pull/16
