@@ -61,7 +61,7 @@ def main(p_config: dict):
     text = Text(frame_counter="frame: ",
                 text_size=0.1,
                 rotation=(1.13, 0, 0),
-                location=(-0.2, -0.7, 0.0),
+                location=(-0.18, -0.6, 0.0),
                 lens=focal_length)
     all_mol.render(resolution=(blender_resolution_x, blender_resolution_y),
                    filepath=f"{render_filename}.{outfile_suffix}",

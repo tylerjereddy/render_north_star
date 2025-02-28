@@ -10,7 +10,7 @@ blender_engine_device: "GPU"
 blender_resolution_x: 1000
 blender_resolution_y: 1000
 # mode can be "movie" or "image"
-mode: "image"
+mode: "movie"
 # .mp4 or .png filename suffix will be appended automatically
 # depending on `mode`
 render_filename: "test"
@@ -19,9 +19,9 @@ frame_end: 95
 # TODO: expand selection support beyond a single selection string
 sel_string: "all"
 background_color:
-  red: 0.0
-  green: 0.1
-  blue: 0.7
+  red: 0.75
+  green: 0.75
+  blue: 0.75
   alpha: 1.0
 # a larger focal length increases "zoom"
 focal_length: 80
