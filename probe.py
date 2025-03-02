@@ -7,20 +7,6 @@ import bpy
 import yaml
 
 
-def set_background(rgba: tuple):
-    # NOTE: manual bpy usage--this functionality should be upstreamed to ggmolvis
-    bpy.context.scene.render.film_transparent = False
-    world = bpy.context.scene.world
-    if not world.use_nodes:
-        world.use_nodes = True
-    node_tree = world.node_tree
-    bg_node = node_tree.nodes.get("Background") or node_tree.nodes.new("ShaderNodeBackground")
-    bg_node.inputs["Color"].default_value = rgba
-    output_node = node_tree.nodes.get("World Output") or node_tree.nodes.new("ShaderNodeOutputWorld")
-    if not any(link.to_node == output_node for link in bg_node.outputs[0].links):
-        node_tree.links.new(bg_node.outputs[0], output_node.inputs[0])
-
-
 def main(p_config: dict):
     """
     Parameters
@@ -72,14 +58,13 @@ def main(p_config: dict):
     bpy.context.scene.frame_start = frame_start
     bpy.context.scene.frame_end = frame_end
 
-    set_background(rgba=(background_color["red"],
-                         background_color["green"],
-                         background_color["blue"],
-                         background_color["alpha"]))
-
     all_mol.render(resolution=(blender_resolution_x, blender_resolution_y),
                    filepath=f"{render_filename}.{outfile_suffix}",
-                   mode=mode)
+                   mode=mode,
+                   composite_bg_rgba=(background_color["red"],
+                                      background_color["green"],
+                                      background_color["blue"],
+                                      background_color["alpha"]))
 
 
 if __name__ == "__main__":
