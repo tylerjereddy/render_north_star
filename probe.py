@@ -44,6 +44,7 @@ def main(p_config: dict):
     background_color = p_config["background_color"]
     focal_length = p_config["focal_length"]
     subframes = p_config["subframes"]
+    average = p_config["average"]
     material = p_config["material"]
 
     if mode == "movie":
@@ -57,6 +58,7 @@ def main(p_config: dict):
         bpy.context.scene.cycles.device = blender_engine_device
 
     ggmv = GGMolVis()
+    ggmv.average = average
     u = mda.Universe(topology_path, trajectory_path)
     system = u.select_atoms(sel_string)
     all_mol = ggmv.molecule(system, lens=focal_length, material=material)
