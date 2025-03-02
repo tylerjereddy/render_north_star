@@ -15,7 +15,7 @@ mode: "image"
 # depending on `mode`
 render_filename: "test"
 frame_start: 0
-frame_end: 285
+frame_end: 95
 # TODO: expand selection support beyond a single selection string
 sel_string: "all"
 background_color:
@@ -30,9 +30,13 @@ focal_length: 80
 # to continue to capture the same effective trajectory length;
 # so with subframes of 1 you would double upper frame bound,
 # with value of 2 you would triple, etc.
-subframes: 2
+subframes: 0
 # at the moment, interesting materials options include:
 # default -- looks professional
 # ambient -- also looks professional
 # squishy -- a plastic-like appearance, pretty neat!
 material: "default"
+# average can be increased for averaging positions over
+# flanking frames to help avoid i.e., "jittering" in movie renders;
+# in contrast to subframes, no additional frames are added
+average: 3
